@@ -18,7 +18,7 @@ struct Request {
 #[derive(Serialize)]
 struct Response {
     req_id: String,
-    msg: String,
+    text: String,
 }
 
 /// This is the main body for the function.
@@ -57,7 +57,7 @@ async fn function_handler(event: LambdaEvent<Request>) -> Result<Response, Error
     // Prepare the response
     let resp = Response {
         req_id: event.context.request_id,
-        msg: format!("{}", text),
+        text: format!("{}", text),
     };
 
     // Return `Response` (it will be serialized to JSON automatically by the runtime)
